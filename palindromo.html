@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Palíndromos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            /*background: linear-gradient(to bottom right, #ffffff, #7e7e7e);*/
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00796b;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificador de Palíndromos</h1>
+        <form onsubmit="return verificarPalindromo(event)">
+            <input type="text" id="texto" placeholder="Escribe una palabra o frase" required>
+            <button type="submit">Verificar</button>
+        </form>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function verificarPalindromo(event) {
+            event.preventDefault(); // Evita que la página se recargue
+
+            const texto = document.getElementById("texto").value;
+            const textoLimpio = texto.toLowerCase().replace(/[\W_]/g, ""); // Elimina espacios y caracteres especiales
+            const textoReverso = textoLimpio.split("").reverse().join("");
+
+            const resultadoDiv = document.getElementById("resultado");
+
+            if (textoLimpio === textoReverso) {
+                resultadoDiv.style.color = "green";
+                resultadoDiv.textContent = `"${texto}" es un palíndromo.`;
+            } else {
+                resultadoDiv.style.color = "red";
+                resultadoDiv.textContent = `"${texto}" no es un palíndromo.`;
+            }
+        }
+    </script>
+</body>
+</html>
