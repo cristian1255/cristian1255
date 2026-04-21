@@ -1,0 +1,37 @@
+# Apache Airflow
+apache-airflow==2.9.1
+apache-airflow-providers-postgres==5.10.0
+apache-airflow-providers-celery==3.7.0
+apache-airflow-providers-redis==3.4.0
+
+# Celery & Redis
+celery==5.3.4
+redis==5.0.1
+
+# Base de datos
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.23
+
+# Web scraping & parsing
+requests==2.31.0
+beautifulsoup4==4.12.2
+lxml==4.9.3
+html5lib==1.1
+
+# PDF processing
+pdfplumber==0.10.3
+
+# Selenium (para scraping con navegador)
+selenium==4.15.2
+webdriver-manager==4.0.1
+
+# Data processing
+pandas==2.0.3
+numpy==1.24.3
+
+# Utilities
+python-dotenv==1.0.0
+gunicorn==21.2.0
+
+# Logging & monitoring
+python-json-logger==2.0.7

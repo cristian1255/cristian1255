@@ -1,0 +1,37 @@
+📦 ESTRUCTURA PARA AIRFLOW EN LA NUBE (Sin Docker local)
+═════════════════════════════════════════════════════════
+
+airflow-cloud/
+├── .github/
+│   └── workflows/
+│       ├── main.yml              # Deploy automático a la nube
+│       └── validate.yml           # Validar código
+├── dags/                          # Tus DAGs
+│   ├── dag_sct_estrella.py       
+│   ├── etls/
+│   │   ├── __init__.py
+│   │   └── etl_viales_estrella.py
+│   └── pipelines/
+│       ├── __init__.py
+│       ├── viales_scraper.py
+│       └── viales_estrella_pipeline.py
+├── logs/                          # Generado en tiempo de ejecución
+├── config/
+│   └── airflow.cfg               # Config de Airflow para cloud
+├── .devcontainer/
+│   ├── devcontainer.json         # VSCode Remote Dev
+│   └── Dockerfile                # Imagen Airflow optimizada
+├── Dockerfile                     # Para desplegar en la nube
+├── docker-compose.yml             # Para testing local (opcional)
+├── requirements.txt               # Python deps
+├── .env.example                   # Variables de entorno
+├── .gitignore
+├── procfile                       # Para Heroku
+├── railway.toml                   # Para Railway
+├── .dockerignore
+├── README.md
+└── docs/
+    ├── DEPLOYMENT.md             # Guía de deployment
+    ├── CLOUD_SETUP.md            # Setup en la nube
+    └── LOCAL_TESTING.md          # Testing local (opcional)
+

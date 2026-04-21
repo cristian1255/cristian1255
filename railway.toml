@@ -1,0 +1,34 @@
+# railway.toml - Configuración para Railway.app
+# Deploy fácil a Railway sin necesidad de CLI
+
+[build]
+builder = "dockerfile"
+
+[deploy]
+startCommand = "airflow db init && airflow webserver --port $PORT"
+
+[[services]]
+name = "airflow-webserver"
+internal_port = 8080
+public_port = 8080
+protocol = "http"
+healthCheck = "/health"
+
+[[services]]
+name = "airflow-scheduler"
+startCommand = "airflow scheduler"
+internal_port = 8794
+
+[[services]]
+name = "airflow-worker"
+startCommand = "airflow celery worker"
+
+# Variables de entorno necesarias
+[env]
+AIRFLOW_HOME = "/opt/airflow"
+AIRFLOW__CORE__LOAD_EXAMPLES = "False"
+AIRFLOW__CORE__EXECUTOR = "CeleryExecutor"
+PYTHONUNBUFFERED = "1"
+AIRFLOW__DATABASE__SQL_ALCHEMY_CONN = "$DATABASE_URL"
+AIRFLOW__CELERY__BROKER_URL = "$REDIS_URL"
+AIRFLOW__CELERY__RESULT_BACKEND = "$REDIS_URL"
